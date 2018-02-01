@@ -50,3 +50,36 @@ Jan 31 23:21:04.000 [notice] Tor has successfully opened a circuit. Looks like c
 Jan 31 23:21:04.000 [notice] Bootstrapped 100%: Done
 ```
 
+5. Go to the privoxy sbin folder and configure privoxy to run with a configuration locally. For this, setup the proxy setting in local system as http://127.0.0.1 with port 8118. Privoxy helps you to connect to web through proxy as well as provide gateway for tor and others to reach back.
+
+In the sbin folder of privoxy, edit config for the following section to uncomment forward-socks5t and forward 192.* section as given below.
+```
+#      To chain Privoxy and Tor, both running on the same system, you
+#      would use something like:
+#
+       forward-socks5t   /               127.0.0.1:9050 .
+#       forward-socks5    /               127.0.0.1:9050 .
+#
+#      Note that if you got Tor through one of the bundles, you may
+#      have to change the port from 9050 to 9150 (or even another
+#      one). For details, please check the documentation on the Tor
+#      website.
+#
+#      The public Tor network can't be used to reach your local
+#      network, if you need to access local servers you therefore
+#      might want to make some exceptions:
+#
+        forward         192.168.*.*/     .
+        forward            10.*.*.*/     .
+        forward           127.*.*.*/     .
+#
+
+```
+Run the proivoxy as follows.
+```
+sudo /usr/local/Cellar/privoxy/3.0.26/sbin/privoxy 
+```
+
+Once done, check for http://localhost:8118. You should see privoxy running.
+
+Once the above is set, you can just run the python file and should see the output in terms of IP you are recognized with from external world and also the output of sites like amazon etc who otherwise would have given you a OOPS! error or not reachable error.
