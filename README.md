@@ -1,5 +1,7 @@
-# pricingscraper
-A webscraper which uses anonymous proxy IP to scrape and has intelligence to delay scraping, changing iP on request .
+# PricingScrapper
+A webscraper which uses anonymous proxy IP to scrape and has intelligence to delay scraping, changing iP on request.
+Here I have tried to explain and detail out usage of TOR with PRIVOXY to avoid identity in the world of bots/internet and use dynamic proxy IP from tor to scrape/crawl website in external world.
+
 
 Key Steps to Configure
 1. Install two packages on your system. I am using MAC OS, so will detail below. I beleive you can visit respective URL of sites to download and set it up first.
